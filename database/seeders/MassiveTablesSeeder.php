@@ -16,12 +16,13 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class MassiveTablesSeeder extends Seeder
 {
     public function run(): void
     {
-        $count = 10;
+        $count = 3;
         $utcNow = Carbon::now('UTC');
         $now = $utcNow->format('Y-m-d H:i:s');
         DB::statement("SET time_zone = '+00:00'");
@@ -78,6 +79,14 @@ class MassiveTablesSeeder extends Seeder
         Certificate::factory()->count($count)->create([
             'created_by' => fn () => fake()->randomElement($userIds),
         ]);
+
+          $admin = User::updateOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'I Quran Admin',
+                'password' => Hash::make('12345678'),
+            ]
+        );
 
         DB::table('personal_access_tokens')->insert(
             collect(range(1, $count))->map(fn () => [

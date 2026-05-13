@@ -31,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->profile()
-            ->brandName('Online Islamic Madrasha')
+            ->brandName('I Quran')
             ->colors([
                 'primary' => Color::Green,
             ])
@@ -60,7 +60,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->spa()
+            // ->spa()
             ->sidebarCollapsibleOnDesktop()         
             ->userMenuItems([
                 // MenuItem::make()
