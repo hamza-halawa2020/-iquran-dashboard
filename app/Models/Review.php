@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
+    use HasFactory;
+
     protected $table = 'reviews';
+
     protected $fillable = [
         'name',
         'country',
@@ -17,7 +21,7 @@ class Review extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'approved_by');
+        return $this->belongsTo(User::class, 'approved_by');
     }
 
     public function scopeActive($query)
