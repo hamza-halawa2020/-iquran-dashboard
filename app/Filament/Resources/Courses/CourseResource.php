@@ -95,6 +95,7 @@ class CourseResource extends Resource
     {
         return $table
             ->recordTitleAttribute('title')
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 TextColumn::make('title')
                     ->label(__('Title'))

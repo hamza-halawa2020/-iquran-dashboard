@@ -94,6 +94,7 @@ class ReviewResource extends Resource
     {
         return $table
             ->recordTitleAttribute('name')
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 TextColumn::make('name')
                     ->label(__('Name'))

@@ -21,9 +21,10 @@ class MassiveTablesSeeder extends Seeder
 {
     public function run(): void
     {
-        $count = 1000;
+        $count = 10;
         $utcNow = Carbon::now('UTC');
         $now = $utcNow->format('Y-m-d H:i:s');
+        DB::statement("SET time_zone = '+00:00'");
 
         Schema::disableForeignKeyConstraints();
 
