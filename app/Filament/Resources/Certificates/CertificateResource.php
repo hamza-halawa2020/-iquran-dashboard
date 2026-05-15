@@ -33,6 +33,11 @@ class CertificateResource extends Resource
         return __('Certificate');
     }
 
+    public static function canAccess(): bool
+{
+    return false;
+}
+
     public static function getPluralModelLabel(): string
     {
         return __('Certificates');

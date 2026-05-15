@@ -84,12 +84,12 @@ class ManageSettings extends Page
                             ->columnSpanFull(),
                     ]),
 
-                Section::make('Media')
-                    ->schema([
-                        FileUpload::make('logo')
-                            ->label('Logo')
-                            ->image(),
-                    ]),
+                // Section::make('Media')
+                //     ->schema([
+                //         FileUpload::make('logo')
+                //             ->label('Logo')
+                //             ->image(),
+                //     ]),
             ])
             ->statePath('data');
     }

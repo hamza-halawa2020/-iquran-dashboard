@@ -30,6 +30,13 @@ class MainSliderResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+
+    public static function canAccess(): bool
+{
+    return false;
+}
+
+
     protected static ?string $recordTitleAttribute = 'title';
 
         public static function getModelLabel(): string

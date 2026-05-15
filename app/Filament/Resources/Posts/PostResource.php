@@ -39,6 +39,13 @@ class PostResource extends Resource
         return __('Post');
     }
 
+    
+    public static function canAccess(): bool
+{
+    return false;
+}
+
+
     public static function getPluralModelLabel(): string
     {
         return __('Posts');

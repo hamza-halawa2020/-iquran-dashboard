@@ -36,6 +36,11 @@ class MediaCenterResource extends Resource
         return __('Media Center');
     }
 
+    public static function canAccess(): bool
+{
+    return false;
+}
+
     public static function getPluralModelLabel(): string
     {
         return __('Media Centers');
