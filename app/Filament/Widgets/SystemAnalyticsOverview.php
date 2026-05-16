@@ -30,12 +30,12 @@ class SystemAnalyticsOverview extends StatsOverviewWidget
         return [
             Stat::make('Users', $this->countByDateRange(User::query(), $fromDate, $toDate))->color('primary'),
             Stat::make('Contacts', $this->countByDateRange(Contact::query(), $fromDate, $toDate))->color('warning'),
-            Stat::make('Posts', $this->countByDateRange(Post::query(), $fromDate, $toDate))->color('success'),
+            // Stat::make('Posts', $this->countByDateRange(Post::query(), $fromDate, $toDate))->color('success'),
             Stat::make('Courses', $this->countByDateRange(Course::query(), $fromDate, $toDate))->color('info'),
             Stat::make('Reviews', $this->countByDateRange(Review::query(), $fromDate, $toDate))->color('gray'),
-            Stat::make('Certificates', $this->countByDateRange(Certificate::query(), $fromDate, $toDate))->color('danger'),
-            Stat::make('Media Center', $this->countByDateRange(MediaCenter::query(), $fromDate, $toDate))->color('success'),
-            Stat::make('Main Sliders', $this->countByDateRange(MainSlider::query(), $fromDate, $toDate))->color('primary'),
+            // Stat::make('Certificates', $this->countByDateRange(Certificate::query(), $fromDate, $toDate))->color('danger'),
+            // Stat::make('Media Center', $this->countByDateRange(MediaCenter::query(), $fromDate, $toDate))->color('success'),
+            // Stat::make('Main Sliders', $this->countByDateRange(MainSlider::query(), $fromDate, $toDate))->color('primary'),
         ];
     }
 
