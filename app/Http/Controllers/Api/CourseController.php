@@ -28,6 +28,7 @@ class CourseController extends ApiController
             ->map(fn (CourseCategory $category) => [
                 'id' => $category->id,
                 'name' => $category->name,
+                'description' => $category->description,
                 'image_url' => $category->image ? asset('storage/' . $category->image) : null,
                 'courses_count' => $category->courses_count,
             ]);
