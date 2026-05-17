@@ -46,9 +46,9 @@ class ManageSettings extends Page
                         TextInput::make('whatsapp')
                             ->label('WhatsApp')
                             ->tel(),
-                        TextInput::make('facebook')
-                            ->label('Facebook')
-                            ->url(),
+                        // TextInput::make('facebook')
+                        //     ->label('Facebook')
+                        //     ->url(),
                         TextInput::make('instagram')
                             ->label('Instagram')
                             ->url(),
@@ -58,7 +58,7 @@ class ManageSettings extends Page
                         Textarea::make('admin_notification_emails')
                             ->label('Notification Emails')
                             ->rows(2)
-                            ->placeholder('e.g. zahraabdelraheem05@gmail.com, admin2@example.com')
+                            ->placeholder('e.g. admin@example.com, admin2@example.com')
                             ->columnSpanFull(),
                     ])->columns(2),
 
