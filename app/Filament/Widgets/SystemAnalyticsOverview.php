@@ -8,6 +8,8 @@ use App\Models\Course;
 use App\Models\MainSlider;
 use App\Models\MediaCenter;
 use App\Models\Post;
+use App\Models\CourseCategory;
+use App\Models\Staff;
 use App\Models\Review;
 use App\Models\User;
 use Carbon\Carbon;
@@ -33,6 +35,8 @@ class SystemAnalyticsOverview extends StatsOverviewWidget
             // Stat::make('Posts', $this->countByDateRange(Post::query(), $fromDate, $toDate))->color('success'),
             Stat::make('Courses', $this->countByDateRange(Course::query(), $fromDate, $toDate))->color('info'),
             Stat::make('Reviews', $this->countByDateRange(Review::query(), $fromDate, $toDate))->color('gray'),
+            Stat::make('staffs', $this->countByDateRange(Staff::query(), $fromDate, $toDate))->color('gray'),
+            Stat::make('Categories', $this->countByDateRange(CourseCategory::query(), $fromDate, $toDate))->color('gray'),
             // Stat::make('Certificates', $this->countByDateRange(Certificate::query(), $fromDate, $toDate))->color('danger'),
             // Stat::make('Media Center', $this->countByDateRange(MediaCenter::query(), $fromDate, $toDate))->color('success'),
             // Stat::make('Main Sliders', $this->countByDateRange(MainSlider::query(), $fromDate, $toDate))->color('primary'),

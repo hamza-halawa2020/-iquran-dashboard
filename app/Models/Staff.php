@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Staff extends Model
 {
     use HasFactory;
 
+    protected $table = 'staff';
+
     protected $fillable = [
-        'title',
-        'course_category_id',
-        'category',
+        'name',
         'description',
+        'job_title',
         'image',
         'status',
         'created_by',
@@ -22,11 +23,6 @@ class Course extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function categoryRelation()
-    {
-        return $this->belongsTo(CourseCategory::class, 'course_category_id');
     }
 
     public function scopeActive($query)

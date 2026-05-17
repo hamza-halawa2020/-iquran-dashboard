@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\Courses;
+namespace App\Filament\Resources\Staff;
 
-use App\Filament\Resources\Courses\Pages\ManageCourses;
-use App\Models\Course;
+use App\Filament\Resources\Staff\Pages\ManageStaff;
+use App\Models\Staff;
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -11,10 +11,9 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -26,47 +25,42 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class CourseResource extends Resource
+class StaffResource extends Resource
 {
-    protected static ?string $model = Course::class;
+    protected static ?string $model = Staff::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 
-    protected static ?string $recordTitleAttribute = 'title';
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function getModelLabel(): string
     {
-        return __('Course');
+        return __('Teacher');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Courses');
+        return __('Teachers');
     }
 
     public static function form(Schema $schema): Schema
     {
         return $schema
             ->components([
-                TextInput::make('title')
-                    ->label(__('Title'))
-                    ->required(),
-                Select::make('course_category_id')
-                    ->label(__('Category'))
-                    ->relationship('categoryRelation', 'name')
-                    ->searchable()
-                    ->preload()
-                    ->required(),
-                RichEditor::make('description')
-                    ->label(__('Description'))
+                TextInput::make('name')
+                    ->label(__('Name'))
                     ->required()
+                    ->maxLength(255),
+                Textarea::make('description')
+                    ->label(__('Description'))
+                    ->rows(4)
                     ->columnSpanFull(),
                 FileUpload::make('image')
                     ->label(__('Image'))
-                    ->image()
-                    ->required(),
+                    ->image(),
                 Toggle::make('status')
                     ->label(__('Status'))
+                    ->default(true)
                     ->required(),
             ]);
     }
@@ -75,22 +69,19 @@ class CourseResource extends Resource
     {
         return $schema
             ->components([
-                TextEntry::make('title')
-                    ->label(__('Title')),
-                TextEntry::make('categoryRelation.name')
-                    ->label(__('Category')),
+                TextEntry::make('name')
+                    ->label(__('Name')),
                 TextEntry::make('description')
                     ->label(__('Description'))
-                    ->html()
-                    ->columnSpanFull(),
+                    ->placeholder('-'),
                 ImageEntry::make('image')
                     ->label(__('Image')),
                 IconEntry::make('status')
                     ->label(__('Status'))
                     ->boolean(),
                 TextEntry::make('user.name')
-                    ->label(__('User'))
-                    ->numeric(),
+                    ->label(__('Created By'))
+                    ->placeholder('-'),
                 TextEntry::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()
@@ -101,36 +92,30 @@ class CourseResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('title')
+            ->recordTitleAttribute('name')
             ->defaultSort('created_at', 'desc')
             ->columns([
-                TextColumn::make('title')
-                    ->label(__('Title'))
-                    ->searchable(),
-                TextColumn::make('categoryRelation.name')
-                    ->label(__('Category'))
+                ImageColumn::make('image')
+                    ->label(__('Image')),
+                TextColumn::make('name')
+                    ->label(__('Name'))
                     ->searchable(),
                 TextColumn::make('description')
                     ->label(__('Description'))
-                    ->html()
-                    ->searchable(),
-                ImageColumn::make('image')
-                    ->label(__('Image')),
+                    ->searchable()
+                    ->placeholder('-'),
                 IconColumn::make('status')
                     ->label(__('Status'))
                     ->boolean(),
                 TextColumn::make('user.name')
-                    ->label(__('User'))
-                    ->numeric()
-                    ->sortable(),
+                    ->label(__('Created By'))
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->placeholder('-'),
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
+                    ->sortable(),
             ])
             ->recordActions([
                 ViewAction::make(),
@@ -147,7 +132,7 @@ class CourseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ManageCourses::route('/'),
+            'index' => ManageStaff::route('/'),
         ];
     }
 }

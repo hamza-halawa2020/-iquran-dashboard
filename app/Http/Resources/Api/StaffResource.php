@@ -12,7 +12,7 @@ class StaffResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'job_title' => $this->job_title,
+            'description' => $this->description ?: $this->job_title,
             'image_url' => $this->image ? asset('storage/' . $this->image) : null,
             'status' => $this->status,
         ];

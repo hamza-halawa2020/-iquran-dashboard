@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Contact;
+use App\Models\Course;
 use App\Http\Resources\Api\ContactResource;
 use App\Http\Requests\Api\ContactStoreRequest;
 use App\Mail\Admin\ContactSubmittedMail;
@@ -20,7 +21,13 @@ class ContactController extends ApiController
 
     public function store(ContactStoreRequest $request)
     {
-        $item = $this->model::create($request->validated());
+        $payload = $request->validated();
+        $course = Course::query()->findOrFail((int) $payload['course']);
+
+        $payload['course_id'] = $course->id;
+        $payload['course'] = $course->title;
+
+        $item = $this->model::create($payload);
 
         $resolvedRecipients = AdminNotificationRecipients::resolve();
         $recipients = $resolvedRecipients['recipients'];

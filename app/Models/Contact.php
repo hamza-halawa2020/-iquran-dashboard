@@ -18,6 +18,7 @@ class Contact extends Model
         'age',
         'country',
         'course',
+        'course_id',
         'message',
     ];
 }
