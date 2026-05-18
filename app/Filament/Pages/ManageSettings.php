@@ -55,12 +55,12 @@ class ManageSettings extends Page
                         TextInput::make('email')
                             ->label('Email')
                             ->email(),
-                        Textarea::make('admin_notification_emails')
-                            ->label('Notification Emails')
-                            ->rows(2)
-                            ->placeholder('e.g. admin@example.com, admin2@example.com')
-                            ->helperText('General fallback if channel-specific emails are empty.')
-                            ->columnSpanFull(),
+                        // Textarea::make('admin_notification_emails')
+                        //     ->label('Notification Emails')
+                        //     ->rows(2)
+                        //     ->placeholder('e.g. admin@example.com, admin2@example.com')
+                        //     ->helperText('General fallback if channel-specific emails are empty.')
+                        //     ->columnSpanFull(),
                         Textarea::make('review_notification_emails')
                             ->label('Review Notification Emails')
                             ->rows(2)
