@@ -20,7 +20,7 @@ class ContactSubmittedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New contact message - ' . config('app.name'),
+            subject: 'New Contact Form Message - ' . config('app.name'),
         );
     }
 
@@ -35,4 +35,3 @@ class ContactSubmittedMail extends Mailable
         );
     }
 }
-

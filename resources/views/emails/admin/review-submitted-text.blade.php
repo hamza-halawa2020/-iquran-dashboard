@@ -1,13 +1,12 @@
-Hello,
+Hello Admin,
 
-A new review was submitted on {{ config('app.name') }}.
+A new student review was submitted on {{ config('app.name') }}.
 
-Name: {{ $review->name }}
-Status: {{ $review->status ? 'Approved' : 'Pending approval' }}
+Reviewer Name: {{ $review->name }}
+Current Status: {{ $review->status ? 'Approved' : 'Pending approval' }}
 Submitted at: {{ $review->created_at?->toDateTimeString() }}
 
-Review:
+Review Text:
 {{ $review->review }}
 
 Dashboard: {{ url('/admin/reviews') }}
-

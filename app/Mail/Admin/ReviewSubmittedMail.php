@@ -20,7 +20,7 @@ class ReviewSubmittedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New review submitted - ' . config('app.name'),
+            subject: 'New Student Review - ' . config('app.name'),
         );
     }
 
@@ -35,4 +35,3 @@ class ReviewSubmittedMail extends Mailable
         );
     }
 }
-

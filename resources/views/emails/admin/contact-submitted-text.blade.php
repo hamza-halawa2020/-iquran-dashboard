@@ -1,13 +1,16 @@
-Hello,
+Hello Admin,
 
-A new contact message was submitted on {{ config('app.name') }}.
+You received a new message from the contact form on {{ config('app.name') }}.
 
-Name: {{ $contact->name }}
+Sender Name: {{ $contact->name }}
 Phone: {{ $contact->phone }}
+Email: {{ $contact->email }}
+Age: {{ $contact->age }}
+Country: {{ $contact->country }}
+Interested Course: {{ $contact->course }}
 Submitted at: {{ $contact->created_at?->toDateTimeString() }}
 
-Message:
+Message Content:
 {{ $contact->message }}
 
 Dashboard: {{ url('/admin/contacts') }}
-

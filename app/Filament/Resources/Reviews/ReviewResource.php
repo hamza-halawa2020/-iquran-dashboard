@@ -49,9 +49,6 @@ class ReviewResource extends Resource
                 TextInput::make('name')
                     ->label(__('Name'))
                     ->required(),
-                TextInput::make('country')
-                    ->label(__('Country'))
-                    ->required(),
                 Textarea::make('review')
                     ->label(__('Review'))
                     ->required()
@@ -72,8 +69,6 @@ class ReviewResource extends Resource
             ->components([
                 TextEntry::make('name')
                     ->label(__('Name')),
-                TextEntry::make('country')
-                    ->label(__('Country')),
                 TextEntry::make('review')
                     ->label(__('Review'))
                     ->columnSpanFull(),
@@ -98,9 +93,6 @@ class ReviewResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->label(__('Name'))
-                    ->searchable(),
-                TextColumn::make('country')
-                    ->label(__('Country'))
                     ->searchable(),
                 IconColumn::make('status')
                     ->label(__('Status'))
