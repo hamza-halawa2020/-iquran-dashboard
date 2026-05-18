@@ -59,6 +59,19 @@ class ManageSettings extends Page
                             ->label('Notification Emails')
                             ->rows(2)
                             ->placeholder('e.g. admin@example.com, admin2@example.com')
+                            ->helperText('General fallback if channel-specific emails are empty.')
+                            ->columnSpanFull(),
+                        Textarea::make('review_notification_emails')
+                            ->label('Review Notification Emails')
+                            ->rows(2)
+                            ->placeholder('e.g. review1@example.com, review2@example.com')
+                            ->helperText('Only receives review notifications.')
+                            ->columnSpanFull(),
+                        Textarea::make('contact_notification_emails')
+                            ->label('Contact Form Notification Emails')
+                            ->rows(2)
+                            ->placeholder('e.g. contact1@example.com, contact2@example.com')
+                            ->helperText('Only receives contact form notifications.')
                             ->columnSpanFull(),
                     ])->columns(2),
 

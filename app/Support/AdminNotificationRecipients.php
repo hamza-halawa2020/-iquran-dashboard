@@ -11,9 +11,9 @@ class AdminNotificationRecipients
      *
      * @return array{recipients: array<int, string>, source: 'settings'|'config'|'none'}
      */
-    public static function resolve(): array
+    public static function resolve(?string $channel = null): array
     {
-        $fromSettings = self::fromSettings();
+        $fromSettings = self::fromSettings($channel);
         if (! empty($fromSettings)) {
             return [
                 'recipients' => $fromSettings,
@@ -21,7 +21,7 @@ class AdminNotificationRecipients
             ];
         }
 
-        $fromConfig = self::fromConfig();
+        $fromConfig = self::fromConfig($channel);
         if (! empty($fromConfig)) {
             return [
                 'recipients' => $fromConfig,
@@ -38,10 +38,21 @@ class AdminNotificationRecipients
     /**
      * @return array<int, string>
      */
-    private static function fromSettings(): array
+    private static function fromSettings(?string $channel = null): array
     {
         try {
-            $raw = (string) Setting::getValue('admin_notification_emails', '');
+            $key = match ($channel) {
+                'review' => 'review_notification_emails',
+                'contact' => 'contact_notification_emails',
+                default => 'admin_notification_emails',
+            };
+
+            $raw = (string) Setting::getValue($key, '');
+
+            // Backward compatibility fallback
+            if ($raw === '' && $key !== 'admin_notification_emails') {
+                $raw = (string) Setting::getValue('admin_notification_emails', '');
+            }
         } catch (\Throwable) {
             return [];
         }
@@ -52,9 +63,13 @@ class AdminNotificationRecipients
     /**
      * @return array<int, string>
      */
-    private static function fromConfig(): array
+    private static function fromConfig(?string $channel = null): array
     {
-        $emails = config('notifications.admin_emails', []);
+        $emails = match ($channel) {
+            'review' => config('notifications.review_emails', []),
+            'contact' => config('notifications.contact_emails', []),
+            default => config('notifications.admin_emails', []),
+        };
 
         if (! is_array($emails)) {
             return [];
@@ -97,4 +112,3 @@ class AdminNotificationRecipients
         return $emails;
     }
 }
-

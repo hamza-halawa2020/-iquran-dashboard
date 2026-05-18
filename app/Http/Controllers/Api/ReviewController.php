@@ -22,7 +22,7 @@ class ReviewController extends ApiController
     {
         $item = $this->model::create($request->validated());
 
-        $resolvedRecipients = AdminNotificationRecipients::resolve();
+        $resolvedRecipients = AdminNotificationRecipients::resolve('review');
         $recipients = $resolvedRecipients['recipients'];
         if (! empty($recipients)) {
             Log::info('admin_notification.review.preparing', [

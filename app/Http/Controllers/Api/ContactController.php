@@ -29,7 +29,7 @@ class ContactController extends ApiController
 
         $item = $this->model::create($payload);
 
-        $resolvedRecipients = AdminNotificationRecipients::resolve();
+        $resolvedRecipients = AdminNotificationRecipients::resolve('contact');
         $recipients = $resolvedRecipients['recipients'];
         if (! empty($recipients)) {
             Log::info('admin_notification.contact.preparing', [
