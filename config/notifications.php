@@ -12,6 +12,6 @@ return [
     */
     'admin_emails' => array_values(array_filter(array_map(
         static fn (string $email): string => trim($email),
-        explode(',', (string) env('ADMIN_NOTIFICATION_EMAILS', env('ADMIN_NOTIFICATION_EMAIL', 'iquran.co@gmail.com')))
+        explode(',', (string) env('ADMIN_NOTIFICATION_EMAILS', env('ADMIN_NOTIFICATION_EMAIL')))
     ))),
 ];
