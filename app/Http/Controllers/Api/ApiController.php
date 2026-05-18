@@ -12,6 +12,7 @@ class ApiController extends Controller
     protected bool $paginate = true;
     protected int $perPage = 9;
     protected array $filterableFields = [];
+    protected string $latestBy = 'created_at';
 
     public function index(Request $request)
     {
@@ -27,10 +28,12 @@ class ApiController extends Controller
             }
         }
 
+        $query->latest($this->latestBy);
+
         if ($this->paginate) {
-            $items = $query->latest()->paginate($request->get('limit', $this->perPage));
+            $items = $query->paginate($request->get('limit', $this->perPage));
         } else {
-            $items = $query->latest()->get();
+            $items = $query->get();
         }
 
         return $this->resource::collection($items);
