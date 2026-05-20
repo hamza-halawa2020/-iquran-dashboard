@@ -51,6 +51,19 @@ class StaffResource extends Resource
                     ->label(__('Name'))
                     ->required()
                     ->maxLength(255),
+                TextInput::make('email')
+                    ->label(__('Email'))
+                    ->email()
+                    ->maxLength(255),
+                TextInput::make('phone')
+                    ->label(__('Phone'))
+                    ->maxLength(20),
+                TextInput::make('country')
+                    ->label(__('Country'))
+                    ->maxLength(255),
+                TextInput::make('job_title')
+                    ->label(__('Job Title'))
+                    ->maxLength(255),
                 Textarea::make('description')
                     ->label(__('Description'))
                     ->rows(4)
@@ -71,6 +84,18 @@ class StaffResource extends Resource
             ->components([
                 TextEntry::make('name')
                     ->label(__('Name')),
+                TextEntry::make('email')
+                    ->label(__('Email'))
+                    ->placeholder('-'),
+                TextEntry::make('phone')
+                    ->label(__('Phone'))
+                    ->placeholder('-'),
+                TextEntry::make('country')
+                    ->label(__('Country'))
+                    ->placeholder('-'),
+                TextEntry::make('job_title')
+                    ->label(__('Job Title'))
+                    ->placeholder('-'),
                 TextEntry::make('description')
                     ->label(__('Description'))
                     ->placeholder('-'),
@@ -100,6 +125,22 @@ class StaffResource extends Resource
                 TextColumn::make('name')
                     ->label(__('Name'))
                     ->searchable(),
+                TextColumn::make('email')
+                    ->label(__('Email'))
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('phone')
+                    ->label(__('Phone'))
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('country')
+                    ->label(__('Country'))
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('job_title')
+                    ->label(__('Job Title'))
+                    ->searchable()
+                    ->toggleable(),
                 TextColumn::make('description')
                     ->label(__('Description'))
                     ->searchable()

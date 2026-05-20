@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\MediaCenterController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\CertificateController;
 use App\Http\Controllers\Api\StaffController;
+use App\Http\Controllers\Api\TeacherApplicationController;
 
 Route::get('/settings', [SettingController::class, 'index']);
 
@@ -33,3 +34,4 @@ Route::get('/reviews', [ReviewController::class, 'index']);
 Route::post('/reviews', [ReviewController::class, 'store']);
 
 Route::post('/contacts', [ContactController::class, 'store']);
+Route::post('/teacher-applications', [TeacherApplicationController::class, 'store']);
