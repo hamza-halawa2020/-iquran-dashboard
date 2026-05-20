@@ -73,6 +73,12 @@ class ManageSettings extends Page
                             ->placeholder('e.g. contact1@example.com, contact2@example.com')
                             ->helperText('Only receives contact form notifications.')
                             ->columnSpanFull(),
+                        Textarea::make('teacher_application_notification_emails')
+                            ->label('Teacher Application Notification Emails')
+                            ->rows(2)
+                            ->placeholder('e.g. hr1@example.com, hr2@example.com')
+                            ->helperText('Only receives teacher application notifications.')
+                            ->columnSpanFull(),
                     ])->columns(2),
 
                 Section::make('About Us')

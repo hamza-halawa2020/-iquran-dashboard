@@ -44,6 +44,7 @@ class AdminNotificationRecipients
             $key = match ($channel) {
                 'review' => 'review_notification_emails',
                 'contact' => 'contact_notification_emails',
+                'teacher_application' => 'teacher_application_notification_emails',
                 default => 'admin_notification_emails',
             };
 
@@ -68,6 +69,7 @@ class AdminNotificationRecipients
         $emails = match ($channel) {
             'review' => config('notifications.review_emails', []),
             'contact' => config('notifications.contact_emails', []),
+            'teacher_application' => config('notifications.teacher_application_emails', []),
             default => config('notifications.admin_emails', []),
         };
 
