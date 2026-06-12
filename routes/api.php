@@ -31,7 +31,7 @@ Route::get('/staff', [StaffController::class, 'index']);
 Route::get('/staff/{id}', [StaffController::class, 'show']);
 
 Route::get('/reviews', [ReviewController::class, 'index']);
-Route::post('/reviews', [ReviewController::class, 'store'])->middleware(['honeypot', 'throttle:review-form']);
+Route::post('/reviews', [ReviewController::class, 'store']);
 
-Route::post('/contacts', [ContactController::class, 'store'])->middleware(['honeypot', 'throttle:contact-form']);
-Route::post('/teacher-applications', [TeacherApplicationController::class, 'store'])->middleware(['honeypot', 'throttle:teacher-application-form']);
+Route::post('/contacts', [ContactController::class, 'store']);
+Route::post('/teacher-applications', [TeacherApplicationController::class, 'store']);

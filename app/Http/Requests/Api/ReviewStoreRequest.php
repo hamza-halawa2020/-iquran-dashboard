@@ -16,8 +16,6 @@ class ReviewStoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'review' => 'required|string',
-            'website' => 'prohibited',
-            'url' => 'prohibited',
         ];
     }
 }
