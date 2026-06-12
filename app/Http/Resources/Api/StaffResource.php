@@ -14,6 +14,7 @@ class StaffResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description ?: $this->job_title,
             'image_url' => $this->image ? asset('storage/' . $this->image) : null,
+            'cv_url' => $this->cv ? asset('storage/' . $this->cv) : null,
             'status' => $this->status,
         ];
     }

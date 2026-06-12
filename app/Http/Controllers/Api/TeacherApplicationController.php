@@ -15,6 +15,11 @@ class TeacherApplicationController extends ApiController
     {
         $payload = $request->validated();
 
+        $cvPath = null;
+        if ($request->hasFile('cv')) {
+            $cvPath = $request->file('cv')->store('cvs', 'public');
+        }
+
         $item = Staff::create([
             'name' => $payload['name'],
             'email' => $payload['email'],
@@ -22,6 +27,7 @@ class TeacherApplicationController extends ApiController
             'country' => $payload['country'],
             'job_title' => $payload['job_title'],
             'description' => $payload['message'],
+            'cv' => $cvPath,
             'status' => 0,
             'created_by' => null,
         ]);

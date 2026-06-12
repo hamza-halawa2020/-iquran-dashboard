@@ -20,6 +20,7 @@ class TeacherApplicationStoreRequest extends FormRequest
             'country' => 'required|string|max:255',
             'job_title' => 'required|string|max:255',
             'message' => 'required|string|min:10',
+            'cv' => 'nullable|file|mimes:pdf|max:5120',
         ];
     }
 }

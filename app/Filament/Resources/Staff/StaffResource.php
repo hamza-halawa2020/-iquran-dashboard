@@ -71,6 +71,11 @@ class StaffResource extends Resource
                 FileUpload::make('image')
                     ->label(__('Image'))
                     ->image(),
+                FileUpload::make('cv')
+                    ->label(__('CV'))
+                    ->acceptedFileTypes(['application/pdf'])
+                    ->disk('public')
+                    ->directory('cvs'),
                 Toggle::make('status')
                     ->label(__('Status'))
                     ->default(true)
@@ -101,6 +106,12 @@ class StaffResource extends Resource
                     ->placeholder('-'),
                 ImageEntry::make('image')
                     ->label(__('Image')),
+                TextEntry::make('cv')
+                    ->label(__('CV'))
+                    ->placeholder('-')
+                    ->formatStateUsing(fn ($state) => $state ? asset('storage/' . $state) : null)
+                    ->url(fn ($record) => $record->cv ? asset('storage/' . $record->cv) : null)
+                    ->openUrlInNewTab(),
                 IconEntry::make('status')
                     ->label(__('Status'))
                     ->boolean(),
@@ -148,6 +159,13 @@ class StaffResource extends Resource
                 IconColumn::make('status')
                     ->label(__('Status'))
                     ->boolean(),
+                TextColumn::make('cv')
+                    ->label(__('CV'))
+                    ->placeholder('-')
+                    ->formatStateUsing(fn ($state) => $state ? __('Download CV') : '-')
+                    ->url(fn ($record) => $record->cv ? asset('storage/' . $record->cv) : null)
+                    ->openUrlInNewTab()
+                    ->toggleable(),
                 TextColumn::make('user.name')
                     ->label(__('Created By'))
                     ->sortable()
