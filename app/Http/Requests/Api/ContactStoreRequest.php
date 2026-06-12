@@ -18,7 +18,7 @@ class ContactStoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|max:255|disposable_email',
             'age' => 'required|integer|min:1|max:120',
             'country' => 'required|string|max:255',
             'course_category_id' => 'required|exists:course_categories,id',

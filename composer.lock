@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dab26ad9949ce58a52a802c523a28ed9",
+    "content-hash": "a1cc52eb6b2e650ca72794f53545c7e5",
     "packages": [
         {
             "name": "andreaselia/laravel-api-to-postman",
@@ -1063,6 +1063,92 @@
                 }
             ],
             "time": "2025-03-06T22:45:56+00:00"
+        },
+        {
+            "name": "erag/laravel-disposable-email",
+            "version": "v5.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eramitgupta/laravel-disposable-email.git",
+                "reference": "bce91923425f2ea2a5ae330f60e2e5ccd16b89e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eramitgupta/laravel-disposable-email/zipball/bce91923425f2ea2a5ae330f60e2e5ccd16b89e4",
+                "reference": "bce91923425f2ea2a5ae330f60e2e5ccd16b89e4",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "illuminate/console": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/filesystem": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/translation": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/validation": "^10.0|^11.0|^12.0|^13.0",
+                "php": ">=8.1.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.13",
+                "orchestra/testbench": "^8.36|^9.15|^10.8|^11.0",
+                "pestphp/pest": "^1.22|^2.0|^3.0|^4.0",
+                "pestphp/pest-plugin-laravel": "^1.3|^2.0|^3.0|^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Disposable": "EragLaravelDisposableEmail\\Facades\\Disposable"
+                    },
+                    "providers": [
+                        "EragLaravelDisposableEmail\\LaravelDisposableEmailServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EragLaravelDisposableEmail\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Er Amiit Gupta",
+                    "email": "info.eramitgupta@gmail.com",
+                    "homepage": "https://github.com/eramitgupta"
+                }
+            ],
+            "description": "A Laravel package to detect and block disposable email addresses.",
+            "keywords": [
+                "block disposable",
+                "disposable",
+                "disposable check",
+                "email",
+                "email blacklist",
+                "email domain checker",
+                "email filtering",
+                "email validation rule",
+                "email validator",
+                "fake email",
+                "laravel",
+                "laravel custom rule",
+                "laravel email rule",
+                "temporary email",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/eramitgupta/laravel-disposable-email/issues",
+                "source": "https://github.com/eramitgupta/laravel-disposable-email/tree/v5.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/eramitgupta",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-05-19T10:11:41+00:00"
         },
         {
             "name": "filament/actions",
